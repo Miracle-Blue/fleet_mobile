@@ -1,0 +1,39 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    // fleet_mobile
+    {
+      "name": "fleet_mobile",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "cwd": "${workspaceFolder}",
+      "noDebug": true,
+      "args": [
+        "--dart-define-from-file=config/development.json"
+        // "--dart-define-from-file=config/staging.json"
+      ],
+      "env": {}
+    },
+    {
+      "name": "fleet_mobile (profile)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "program": "lib/main.dart",
+      "cwd": "${workspaceFolder}",
+      "args": ["--dart-define-from-file=config/staging.json"],
+      "env": {}
+    },
+    {
+      "name": "fleet_mobile (release)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "program": "lib/main.dart",
+      "cwd": "${workspaceFolder}",
+      "args": ["--dart-define-from-file=config/production.json"],
+      "env": {}
+    },
+  ]
+}

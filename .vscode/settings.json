@@ -1,0 +1,46 @@
+{
+  "dart.flutterSdkPath": ".fvm/versions/3.38.10",
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [
+      120
+    ]
+  },
+  "cSpell.words": [
+    "appbundle",
+    "codegen",
+    "Conv",
+    "cupertino",
+    "deintegrate",
+    "dismisser",
+    "Dvir",
+    "Encrypter",
+    "endtemplate",
+    "flutterfire",
+    "fluttergen",
+    "fmcsa",
+    "fract",
+    "geolocation",
+    "geolocator",
+    "INPC",
+    "INTE",
+    "iosix",
+    "odometr",
+    "PCOF",
+    "PCON",
+    "Podfile",
+    "pubspec",
+    "Rssi",
+    "sheety",
+    "smoothstep",
+    "Subtags",
+    "temprature",
+    "udevs",
+    "Unstreamed",
+    "usdot",
+    "wakelock",
+    "xcarchive",
+    "zulip"
+  ]
+}

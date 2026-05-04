@@ -1,0 +1,74 @@
+name: ui
+description: "UI Kit"
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  intl: any
+  meta: any
+  collection: any
+
+  cupertino_icons: ^1.0.9
+
+  # vector graphics
+  flutter_svg: ^2.2.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+  # code generation
+  build_runner: ^2.14.1
+  flutter_gen_runner: ^5.13.0
+  vector_graphics_compiler: ^1.2.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - lib/vectors/
+
+  shaders:
+    - lib/shader/circle_gradient.frag
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: lib/font/Poppins-Regular.ttf
+        - asset: lib/font/Poppins-Bold.ttf
+          weight: 700
+        - asset: lib/font/Poppins-Light.ttf
+          weight: 300
+        - asset: lib/font/Poppins-Medium.ttf
+          weight: 500
+        - asset: lib/font/Poppins-Black.ttf
+          weight: 900
+        - asset: lib/font/Poppins-Italic.ttf
+          style: italic
+        - asset: lib/font/Poppins-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: lib/font/Poppins-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: lib/font/Poppins-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: lib/font/Poppins-BlackItalic.ttf
+          weight: 900
+          style: italic
+
+flutter_gen:
+  output: lib/src/gen
+  line_length: 120
+
+  integrations:
+    flutter_svg: true

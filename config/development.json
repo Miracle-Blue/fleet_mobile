@@ -1,0 +1,5 @@
+{
+  "ENVIRONMENT": "development",
+  "BASE_URL": "https://test-fleet.sun-eld.com",
+  "TELEGRAM_API_BASE_URL": "https://api.telegram.org"
+}
