@@ -1,26 +1,48 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart' show Ticker;
+import 'package:flutter/material.dart';
 import 'package:ui/ui.dart';
 
+/// {@template splash_screen}
+/// Very simple splash screen with a pulse animation.
+/// {@endtemplate}
 class SplashScreen extends StatefulWidget {
+  /// {@macro splash_screen}
   const SplashScreen({required this.progress, required this.gradient, super.key});
 
+  /// The progress of the initialization.
   final ValueListenable<({int progress, String message})> progress;
+
+  /// The gradient to use for the background.
+  /// (Ignored in this simple version)
   final ui.FragmentShader gradient;
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
-  var _isInitialized = false;
+class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  late final Animation<double> _animation;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    Future<void>.delayed(const Duration(milliseconds: 500), () => setState(() => _isInitialized = true));
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1500),
+    )..repeat(reverse: true);
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOut,
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -29,110 +51,19 @@ class _SplashScreenState extends State<SplashScreen> {
     final theme = isLightMode ? AppThemeData.light() : AppThemeData.dark();
 
     return Material(
-      color: theme.appColors.onPrimary,
+      color: theme.appColors.primary,
       child: Directionality(
         textDirection: TextDirection.ltr,
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            // Background gradient
-            Positioned.fill(
-              child: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 500),
-                child: _isInitialized
-                    ? SplashGradient(splashShader: widget.gradient, isLightMode: isLightMode)
-                    : const SizedBox.shrink(),
-              ),
+        child: Center(
+          child: ScaleTransition(
+            scale: Tween<double>(begin: 0.9, end: 1.1).animate(_animation),
+            child: AppText.w700s28(
+              'Fleet Mobile',
+              color: theme.appColors.white,
             ),
-            // Text
-            Center(
-              child: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 250),
-                child: _isInitialized
-                    ? AppText.w700s28('SUN ELD', color: theme.appColors.white)
-                    : const SizedBox.shrink(),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
   }
-}
-
-/// {@template splash_gradient}
-/// SplashGradient widget.
-/// {@endtemplate}
-class SplashGradient extends StatefulWidget {
-  /// {@macro splash_gradient}
-  const SplashGradient({
-    required this.splashShader,
-    required this.isLightMode,
-    super.key, // ignore: unused_element
-  });
-
-  final ui.FragmentShader splashShader;
-  final bool isLightMode;
-
-  @override
-  State<SplashGradient> createState() => _SplashGradientState();
-}
-
-/// State for widget SplashGradient.
-class _SplashGradientState extends State<SplashGradient> with SingleTickerProviderStateMixin {
-  late Ticker? _ticker;
-
-  double _time = 0;
-
-  /* #region Lifecycle */
-  @override
-  void initState() {
-    super.initState();
-
-    _ticker = createTicker((elapsed) {
-      setState(() => _time = elapsed.inMilliseconds / 2000);
-    });
-
-    _ticker?.start();
-  }
-
-  @override
-  void dispose() {
-    _ticker?.dispose();
-    _ticker = null;
-
-    super.dispose();
-  }
-  /* #endregion */
-
-  @override
-  Widget build(BuildContext context) => RepaintBoundary(
-    child: CustomPaint(
-      size: Size.infinite,
-      painter: GradientPainter(shader: widget.splashShader, time: _time, isLightMode: widget.isLightMode),
-    ),
-  );
-}
-
-class GradientPainter extends CustomPainter {
-  GradientPainter({required this.shader, required this.time, required this.isLightMode});
-
-  final ui.FragmentShader shader;
-  final double time;
-  final bool isLightMode;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    shader
-      ..setFloat(0, size.width)
-      ..setFloat(1, size.height)
-      ..setFloat(2, time)
-      ..setFloat(3, isLightMode ? 1 : 0);
-
-    final paint = Paint()..shader = shader;
-    canvas.drawRect(Offset.zero & size, paint);
-  }
-
-  @override
-  bool shouldRepaint(GradientPainter oldDelegate) => oldDelegate.time != time;
 }

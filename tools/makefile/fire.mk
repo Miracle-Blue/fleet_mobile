@@ -23,7 +23,7 @@ fire-login: ## Login and initialize Firebase CLI
 
 .PHONY: create-fp
 create-fp: ## Create a new Firebase project
-	@firebase projects:create sun-eld-app --display-name "SUN ELD"
+	@firebase projects:create sun-eld-app --display-name "Fleet Mobile"
 
 .PHONY: configure
 configure: ## Configure FlutterFire for the project
