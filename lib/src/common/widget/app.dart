@@ -1,11 +1,11 @@
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:logbook/logbook.dart';
 import 'package:ui/ui.dart';
+import '../../feature/main/screen/main_screen.dart';
 import '../../feature/settings/screen/settings_scope.dart';
 import '../constant/config.dart';
 import '../dependency/model/debug_config.dart';
 import '../extension/context_extension.dart';
-
 
 part 'app_debug_config_initialization.dart';
 part 'app_state.dart';
@@ -58,5 +58,6 @@ class _AppState extends AppState {
             child: Logbook(config: _logbookConfig, child: child ?? const SizedBox.shrink()),
           ),
         ),
+    home: const MainScreen(),
   );
 }
