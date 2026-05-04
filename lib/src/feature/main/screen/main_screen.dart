@@ -21,13 +21,7 @@ class _MainScreenState extends MainScreenState {
   @override
   Widget build(BuildContext context) => PopScope(
     canPop: false,
-    onPopInvokedWithResult: (didPop, result) async {
-      if (didPop) return;
-      final canGoBack = await controller?.canGoBack() ?? false;
-      if (canGoBack) {
-        await controller?.goBack();
-      }
-    },
+    onPopInvokedWithResult: onPopInvokedWithResult,
     child: Scaffold(
       backgroundColor: context.x.theme.primaryColor,
       body: SafeArea(
@@ -47,13 +41,15 @@ class _MainScreenState extends MainScreenState {
             ),
             if (progress < 1.0)
               Positioned(
-                top: 0,
+                bottom: 0,
                 left: 0,
                 right: 0,
-                child: LinearProgressIndicator(
-                  value: progress,
-                  backgroundColor: Colors.transparent,
-                  color: Theme.of(context).primaryColor,
+                child: Center(
+                  child: LinearProgressIndicator(
+                    value: progress,
+                    backgroundColor: Colors.transparent,
+                    color: context.x.theme.primaryColor,
+                  ),
                 ),
               ),
           ],

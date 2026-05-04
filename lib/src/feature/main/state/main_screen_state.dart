@@ -35,6 +35,14 @@ abstract class MainScreenState extends State<MainScreen> {
     transparentBackground: true,
   );
 
+  Future<void> onPopInvokedWithResult(bool didPop, _) async {
+    if (didPop) return;
+    final canGoBack = await controller?.canGoBack() ?? false;
+    if (canGoBack) {
+      await controller?.goBack();
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -56,35 +64,18 @@ abstract class MainScreenState extends State<MainScreen> {
     pullToRefreshController?.setEnabled(true);
   }
 
-  void onLoadStart(InAppWebViewController controller, WebUri? url) {
-    setState(() {
-      isError = false;
-    });
+  void onLoadStart(_, _) => setState(() => isError = false);
+
+  Future<void> onLoadStop(_, _) async => await pullToRefreshController?.endRefreshing();
+
+  void onProgressChanged(_, int progress) {
+    if (progress == 100) pullToRefreshController?.endRefreshing();
+    setState(() => this.progress = progress / 100);
   }
 
-  Future<void> onLoadStop(InAppWebViewController controller, WebUri? url) async {
-    await pullToRefreshController?.endRefreshing();
-  }
+  void onReceivedError(_, _, _) => setState(() => isError = true);
 
-  void onProgressChanged(InAppWebViewController controller, int progress) {
-    if (progress == 100) {
-      pullToRefreshController?.endRefreshing();
-    }
-    setState(() {
-      this.progress = progress / 100;
-    });
-  }
-
-  void onReceivedError(InAppWebViewController controller, WebResourceRequest request, WebResourceError error) {
-    setState(() {
-      isError = true;
-    });
-  }
-
-  Future<NavigationActionPolicy?> shouldOverrideUrlLoading(
-    InAppWebViewController controller,
-    NavigationAction navigationAction,
-  ) async {
+  Future<NavigationActionPolicy?> shouldOverrideUrlLoading(_, NavigationAction navigationAction) async {
     final uri = navigationAction.request.url;
     if (uri == null) return NavigationActionPolicy.ALLOW;
 
@@ -98,10 +89,8 @@ abstract class MainScreenState extends State<MainScreen> {
     return NavigationActionPolicy.ALLOW;
   }
 
-  Future<PermissionResponse?> onPermissionRequest(
-    InAppWebViewController controller,
-    PermissionRequest permissionRequest,
-  ) async => PermissionResponse(resources: permissionRequest.resources, action: PermissionResponseAction.GRANT);
+  Future<PermissionResponse?> onPermissionRequest(_, PermissionRequest permissionRequest) async =>
+      PermissionResponse(resources: permissionRequest.resources, action: PermissionResponseAction.GRANT);
 
   URLRequest get initialUrlRequest => URLRequest(url: WebUri(Config.apiBaseUrl));
 
