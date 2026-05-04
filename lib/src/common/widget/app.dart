@@ -6,6 +6,7 @@ import '../../feature/settings/screen/settings_scope.dart';
 import '../constant/config.dart';
 import '../dependency/model/debug_config.dart';
 import '../extension/context_extension.dart';
+import 'network_checker.dart';
 
 part 'app_debug_config_initialization.dart';
 part 'app_state.dart';
@@ -55,7 +56,9 @@ class _AppState extends AppState {
           key: _appKey,
           data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
           child: KeyboardDismisser(
-            child: Logbook(config: _logbookConfig, child: child ?? const SizedBox.shrink()),
+            child: NetworkChecker(
+              child: Logbook(config: _logbookConfig, child: child ?? const SizedBox.shrink()),
+            ),
           ),
         ),
     home: const MainScreen(),
