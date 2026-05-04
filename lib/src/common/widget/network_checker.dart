@@ -16,11 +16,7 @@ class NetworkChecker extends StatefulWidget {
 
   /// The stream of connectivity results.
   static Stream<bool> get hasConnectionStream => Connectivity().onConnectivityChanged.asBroadcastStream().transform(
-    StreamTransformer.fromHandlers(
-      handleData: (data, sink) => sink.add(data.hasConnection),
-      handleError: (error, stackTrace, sink) => sink.addError(error, stackTrace),
-      handleDone: (sink) => sink.close(),
-    ),
+    StreamTransformer.fromHandlers(handleData: (data, sink) => sink.add(data.hasConnection)),
   );
 
   @override

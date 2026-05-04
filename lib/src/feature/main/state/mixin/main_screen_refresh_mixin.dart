@@ -11,7 +11,12 @@ mixin MainScreenRefreshMixin on State<MainScreen>, MainScreenControllerMixin {
     super.initState();
 
     pullToRefreshController = PullToRefreshController(
-      settings: PullToRefreshSettings(color: Colors.white),
+      settings: PullToRefreshSettings(
+        color: switch (defaultTargetPlatform) {
+          TargetPlatform.iOS => Colors.white,
+          _ => Colors.blue,
+        },
+      ),
       onRefresh: onRefresh,
     );
 
