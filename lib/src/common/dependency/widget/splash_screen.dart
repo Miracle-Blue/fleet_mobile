@@ -28,14 +28,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1500),
-    )..repeat(reverse: true);
-    _animation = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeInOut,
-    );
+    _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 1500))..repeat(reverse: true);
+    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
   }
 
   @override
@@ -56,10 +50,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
         child: Center(
           child: ScaleTransition(
             scale: Tween<double>(begin: 0.9, end: 1.1).animate(_animation),
-            child: AppText.w700s28(
-              'Fleet Mobile',
-              color: theme.appColors.white,
-            ),
+            child: AppText.w700s28('Fleet Mobile', color: theme.appColors.white),
           ),
         ),
       ),

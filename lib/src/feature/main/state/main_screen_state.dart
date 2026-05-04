@@ -1,5 +1,3 @@
-
-
 import 'dart:async';
 import 'dart:io';
 
@@ -18,7 +16,6 @@ part 'mixin/main_screen_refresh_mixin.dart';
 part 'mixin/main_screen_progress_mixin.dart';
 part 'mixin/main_screen_error_mixin.dart';
 part 'mixin/main_screen_permission_mixin.dart';
-
 
 abstract class MainScreenState extends State<MainScreen>
     with
