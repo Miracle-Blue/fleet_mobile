@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io' show Platform;
 
 import 'package:flutter/foundation.dart';
@@ -7,6 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../common/constant/config.dart';
 import '../../../common/extension/context_extension.dart';
+import '../../../common/widget/network_checker.dart';
 
 part '../state/main_screen_state.dart';
 

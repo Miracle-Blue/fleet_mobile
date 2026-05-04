@@ -3,6 +3,7 @@ part of '../screen/main_screen.dart';
 abstract class MainScreenState extends State<MainScreen> {
   InAppWebViewController? controller;
   PullToRefreshController? pullToRefreshController;
+  StreamSubscription<bool>? hasConnectionSubscription;
 
   double progress = 0;
   bool isError = false;
@@ -49,14 +50,22 @@ abstract class MainScreenState extends State<MainScreen> {
 
     pullToRefreshController = PullToRefreshController(
       settings: PullToRefreshSettings(color: Colors.blue),
-      onRefresh: () async {
-        if (defaultTargetPlatform == TargetPlatform.android) {
-          await controller?.reload();
-        } else if (defaultTargetPlatform == TargetPlatform.iOS) {
-          await controller?.loadUrl(urlRequest: URLRequest(url: await controller?.getUrl()));
-        }
-      },
+      onRefresh: onRefresh,
     );
+
+    hasConnectionSubscription = NetworkChecker.hasConnectionStream.listen((hasConnection) async {
+      if (hasConnection) {
+        await onRefresh();
+      }
+    });
+  }
+
+  Future<void> onRefresh() async {
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      await controller?.reload();
+    } else if (defaultTargetPlatform == TargetPlatform.iOS) {
+      await controller?.loadUrl(urlRequest: URLRequest(url: await controller?.getUrl()));
+    }
   }
 
   void onWebViewCreated(InAppWebViewController controller) {
@@ -96,6 +105,7 @@ abstract class MainScreenState extends State<MainScreen> {
 
   @override
   void dispose() {
+    hasConnectionSubscription?.cancel();
     super.dispose();
   }
 }
