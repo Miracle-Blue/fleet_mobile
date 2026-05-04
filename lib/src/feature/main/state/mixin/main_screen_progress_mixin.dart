@@ -1,4 +1,4 @@
-part of '../../screen/main_screen.dart';
+part of '../main_screen_state.dart';
 
 mixin MainScreenProgressMixin on State<MainScreen>, MainScreenRefreshMixin {
   double progress = 0;

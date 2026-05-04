@@ -1,4 +1,4 @@
-part of '../../screen/main_screen.dart';
+part of '../main_screen_state.dart';
 
 mixin MainScreenNavigationMixin on State<MainScreen>, MainScreenControllerMixin {
   Future<void> onPopInvokedWithResult(bool didPop, _) async {

@@ -1,4 +1,4 @@
-part of '../../screen/main_screen.dart';
+part of '../main_screen_state.dart';
 
 mixin MainScreenPermissionMixin on State<MainScreen> {
   Future<PermissionResponse?> onPermissionRequest(_, PermissionRequest permissionRequest) async =>

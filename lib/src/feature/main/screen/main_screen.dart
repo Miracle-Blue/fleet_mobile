@@ -9,14 +9,8 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../common/constant/config.dart';
 import '../../../common/extension/context_extension.dart';
 import '../../../common/widget/network_checker.dart';
+import '../state/main_screen_state.dart';
 
-part '../state/main_screen_state.dart';
-part '../state/mixin/main_screen_controller_mixin.dart';
-part '../state/mixin/main_screen_navigation_mixin.dart';
-part '../state/mixin/main_screen_refresh_mixin.dart';
-part '../state/mixin/main_screen_progress_mixin.dart';
-part '../state/mixin/main_screen_error_mixin.dart';
-part '../state/mixin/main_screen_permission_mixin.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
