@@ -29,9 +29,8 @@ class _AppState extends AppState {
   @override
   Widget build(BuildContext context) => MaterialApp(
     restorationScopeId: 'material_app',
-
-    // TODO(mcodevs): Change this to l10n
-    title: 'Fleet Mobile',
+    
+    title: 'Sun Fleet',
     debugShowCheckedModeBanner: false,
 
     // Localizations
