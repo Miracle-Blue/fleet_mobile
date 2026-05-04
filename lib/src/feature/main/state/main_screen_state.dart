@@ -1,6 +1,5 @@
 part of '../screen/main_screen.dart';
 
-
 abstract class MainScreenState extends State<MainScreen>
     with
         MainScreenControllerMixin,
