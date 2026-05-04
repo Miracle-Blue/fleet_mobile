@@ -13,36 +13,44 @@ workspace:
   - packages/ui
 
 dependencies:
+  # framework
   flutter:
     sdk: flutter
+  cupertino_icons: ^1.0.8
 
   # workspace
   ui:
     path: packages/ui
 
-  cupertino_icons: ^1.0.8
-  logbook: ^0.5.1
+  # firebase
   firebase_core: ^4.7.0
-  platform_info: ^5.0.0
-  device_info_plus: ^13.1.0
-  path_provider: ^2.1.5
-  flutter_local_notifications: ^21.0.0
-  permission_handler: ^12.0.1
   firebase_messaging: ^16.2.0
   firebase_remote_config: ^6.4.0
-  collection: ^1.19.1
-  throttling: ^2.0.1
-  intl: ^0.20.2
-  http: ^1.6.0
-  control: ^0.2.0
-  keyboard_dismisser: ^3.0.0
+
+  # plugins
+  device_info_plus: ^13.1.0
+  flutter_local_notifications: ^21.0.0
+  path_provider: ^2.1.5
+  permission_handler: ^12.0.1
+  platform_info: ^5.0.0
   url_launcher: ^6.3.2
+
+  # utilities
+  collection: ^1.19.1
+  control: ^0.2.0
+  http: ^1.6.0
+  intl: ^0.20.2
+  keyboard_dismisser: ^3.0.0
+  logbook: ^0.5.1
   meta: ^1.17.0
+  throttling: ^2.0.1
 
 dev_dependencies:
+  # framework
   flutter_test:
     sdk: flutter
 
+  # lints
   flutter_lints: ^6.0.0
 
   # code generation
