@@ -4,16 +4,15 @@ import 'dart:collection';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
 import 'package:logbook/logbook.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:platform_info/platform_info.dart';
 
-import '../../constant/firebase_options.dart';
 import '../../../feature/settings/controller/settings_controller.dart';
 import '../../../feature/settings/data/settings_repository.dart';
 import '../../../feature/settings/model/app_settings.dart';
 import '../../constant/config.dart';
+import '../../constant/firebase_options.dart';
 import '../../constant/pubspec.yaml.g.dart';
 import '../../service/remote_config_service.dart';
 import '../../service/telegram_bot_error_logger.dart';
