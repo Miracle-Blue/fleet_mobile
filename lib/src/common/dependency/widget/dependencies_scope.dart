@@ -9,6 +9,7 @@ class DependenciesScope extends StatelessWidget {
   const DependenciesScope({
     required this.initialization,
     required this.child,
+    required this.updateAvailableScreen,
     this.splashScreen,
     this.errorBuilder,
     super.key,
@@ -20,6 +21,7 @@ class DependenciesScope extends StatelessWidget {
 
   final Widget child;
   final Widget? splashScreen;
+  final Widget updateAvailableScreen;
   final Widget Function(Object error, StackTrace? stackTrace)? errorBuilder;
 
   @override
@@ -38,6 +40,10 @@ class DependenciesScope extends StatelessWidget {
           key: const ValueKey('dependencies_scope'),
           transitionBuilder: (child, animation) => FadeTransition(opacity: animation, child: child),
           child: switch ((snapshot.data, snapshot.error, snapshot.stackTrace)) {
+            (final Dependencies dependencies, null, null)
+                when dependencies.firebaseRemoteConfigValues.updateData.appUpdate.isForceUpdate =>
+              /// This is the update available screen, it will be shown when the app needs force update
+              updateAvailableScreen,
             (final Dependencies dependencies, null, null) => _InheritedDependencies(
               dependencies: dependencies,
               child:

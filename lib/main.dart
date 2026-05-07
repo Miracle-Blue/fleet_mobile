@@ -7,6 +7,7 @@ import 'src/common/dependency/initialization/initialization.dart';
 import 'src/common/dependency/widget/dependencies_scope.dart';
 import 'src/common/dependency/widget/initialization_failed_app.dart';
 import 'src/common/dependency/widget/splash_screen.dart';
+import 'src/common/dependency/widget/update_available_screen.dart';
 import 'src/common/widget/app.dart';
 
 @pragma('vm:entry-point')
@@ -24,6 +25,7 @@ void main([List<String>? args]) => runZonedGuarded<Future<void>>(() async {
         orientations: [.portraitUp, .portraitDown, .landscapeLeft, .landscapeRight],
       ),
       splashScreen: SplashScreen(progress: initializationProgress, gradient: splashGradient),
+      updateAvailableScreen: const UpdateAvailableScreen(),
       child: const App(),
       errorBuilder: (error, stackTrace) => InitializationFailedApp(
         error: error,
