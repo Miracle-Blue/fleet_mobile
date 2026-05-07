@@ -2,12 +2,14 @@ import 'dart:async';
 import 'dart:collection';
 
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:logbook/logbook.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:platform_info/platform_info.dart';
 
+import '../../constant/firebase_options.dart';
 import '../../../feature/settings/controller/settings_controller.dart';
 import '../../../feature/settings/data/settings_repository.dart';
 import '../../../feature/settings/model/app_settings.dart';
@@ -46,11 +48,10 @@ typedef _InitializationStep = FutureOr<void> Function(Dependencies dependencies)
 List<(String, _InitializationStep)> get _initializationSteps => <(String, _InitializationStep)>[
   (
     'Platform pre-initialization',
-    (_) {
+    (_) async {
       /// initializing Firebase
       try {
-        // TODO(miracle-blue): Add Firebase
-        // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+        await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
       } on Object catch (err, stackTrace) {
         l.s(err, stackTrace);
       }

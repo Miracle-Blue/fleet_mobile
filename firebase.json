@@ -1,0 +1,33 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "sun-fleet-a6d0d",
+          "appId": "1:1055756677468:android:d2898186c5be4c74b25199",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "sun-fleet-a6d0d",
+          "appId": "1:1055756677468:ios:7dd28e82dbea6eafb25199",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "sun-fleet-a6d0d",
+          "configurations": {
+            "android": "1:1055756677468:android:d2898186c5be4c74b25199",
+            "ios": "1:1055756677468:ios:7dd28e82dbea6eafb25199"
+          }
+        }
+      }
+    }
+  },
+  "remoteconfig": {
+    "template": "remoteconfig.template.json"
+  }
+}

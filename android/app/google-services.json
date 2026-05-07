@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1055756677468",
+    "project_id": "sun-fleet-a6d0d",
+    "storage_bucket": "sun-fleet-a6d0d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1055756677468:android:d2898186c5be4c74b25199",
+        "android_client_info": {
+          "package_name": "sun.fleet.mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjpxMm_632zFNy8rTVLsdtsaCwu7G5QL4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
