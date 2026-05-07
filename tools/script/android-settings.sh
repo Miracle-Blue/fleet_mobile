@@ -7,8 +7,8 @@ JKS_FILE_PATH="android/app"
 DEFAULT_KEYSTORE_NAME="release-key.jks"
 
 # Define keystore details
-KEYSTORE_PASSWORD="eld_mobile"
-KEY_PASSWORD="eld_mobile"
+KEYSTORE_PASSWORD="sun_fleet_mobile"
+KEY_PASSWORD="sun_fleet_mobile"
 KEY_ALIAS="release"
 VALIDITY=10000
 
