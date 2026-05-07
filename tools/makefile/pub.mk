@@ -111,7 +111,7 @@ codegen: ## Run all code generation tasks
 	@fvm flutter pub get
 	@make build_runner
 	@make fluttergen
-	@make l10n
+# 	@make l10n
 	@make format
 	@clear
 	@echo "✅ Code generated successfully"

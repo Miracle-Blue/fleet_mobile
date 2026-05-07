@@ -92,17 +92,17 @@ sealed class Pubspec {
   static const PubspecVersion version = (
     /// Non-canonical string representation of the version as provided
     /// in the pubspec.yaml file.
-    representation: r'2.0.1+1060',
+    representation: r'1.0.0+2',
 
     /// Returns a 'canonicalized' representation
     /// of the application version.
     /// This represents the version string in accordance with
     /// Semantic Versioning (SemVer) standards.
-    canonical: r'2.0.1+1060',
+    canonical: r'1.0.0+2',
 
     /// MAJOR version when you make incompatible API changes.
     /// The major version number: 1 in "1.2.3".
-    major: 2,
+    major: 1,
 
     /// MINOR version when you add functionality
     /// in a backward compatible manner.
@@ -111,25 +111,25 @@ sealed class Pubspec {
 
     /// PATCH version when you make backward compatible bug fixes.
     /// The patch version number: 3 in "1.2.3".
-    patch: 1,
+    patch: 0,
 
     /// The pre-release identifier: "foo" in "1.2.3-foo".
     preRelease: <String>[],
 
     /// The build identifier: "foo" in "1.2.3+foo".
-    build: <String>[r'1060'],
+    build: <String>[r'2'],
   );
 
   /// Build date and time (UTC)
   static final DateTime timestamp = DateTime.utc(
     2026,
-    4,
-    30,
-    16,
+    5,
     7,
+    16,
+    28,
     17,
-    951,
-    658,
+    884,
+    35,
   );
 
   /// Name
@@ -149,7 +149,7 @@ sealed class Pubspec {
   /// Try to pick a name that is clear, terse, and not already in use.
   /// A quick search of packages on the [pub.dev site](https://pub.dev/packages)
   /// to make sure that nothing else is using your name is recommended.
-  static const String name = r'sun_eld';
+  static const String name = r'fleet_mobile';
 
   /// Description
   ///
@@ -164,7 +164,7 @@ sealed class Pubspec {
   /// Think of the description as the sales pitch for your package.
   /// Users see it when they [browse for packages](https://pub.dev/packages).
   /// The description is plain text: no markdown or HTML.
-  static const String description = r'SUN-ELD Driver App';
+  static const String description = r'A new Flutter project.';
 
   /// Homepage
   ///
@@ -347,7 +347,7 @@ sealed class Pubspec {
 
   /// Environment
   static const Map<String, String> environment = <String, String>{
-    'sdk': '^3.10.1',
+    'sdk': '^3.10.9',
   };
 
   /// Platforms
@@ -410,56 +410,29 @@ sealed class Pubspec {
     'flutter': <String, Object>{
       'sdk': r'flutter',
     },
+    'cupertino_icons': r'^1.0.8',
     'ui': <String, Object>{
       'path': r'packages/ui',
     },
-    'localization': <String, Object>{
-      'path': r'packages/localization',
-    },
-    'local_source': <String, Object>{
-      'path': r'packages/local_source',
-    },
-    'intl': r'0.20.2',
-    'meta': r'any',
-    'collection': r'any',
-    'async': r'any',
-    'path': r'^1.9.1',
-    'path_provider': r'^2.1.5',
-    'permission_handler': r'^12.0.1',
-    'keyboard_dismisser': r'^3.0.0',
-    'platform_info': r'^5.0.0',
-    'device_info_plus': r'^12.4.0',
-    'throttling': r'^2.0.1',
-    'wakelock_plus': r'^1.5.2',
-    'battery_plus': r'^7.0.0',
-    'url_launcher': r'^6.3.2',
-    'logbook': r'^0.5.0',
-    'share_plus': r'^12.0.2',
-    'in_app_review': r'^2.0.11',
-    'pdf': r'^3.12.0',
-    'syncfusion_flutter_pdfviewer': r'^33.1.49',
-    'http': r'^1.6.0',
-    'thunder': r'^1.0.2-dev.7',
-    'geolocator': r'^14.0.2',
-    'control': r'^0.2.0',
     'firebase_core': r'^4.7.0',
     'firebase_messaging': r'^16.2.0',
     'firebase_remote_config': r'^6.4.0',
-    'firebase_crashlytics': r'^5.2.0',
+    'connectivity_plus': r'^6.1.0',
+    'device_info_plus': r'^13.1.0',
+    'flutter_inappwebview': r'^6.2.0-beta.3',
     'flutter_local_notifications': r'^21.0.0',
-    'cupertino_icons': r'^1.0.9',
-    'elixir': <String, Object>{
-      'git': <String, Object>{
-        'url': r'https://github.com/Miracle-Blue/elixir',
-        'ref': r'main',
-      },
-    },
-    'blue_ld': <String, Object>{
-      'git': <String, Object>{
-        'url': r'https://github.com/Miracle-Blue/blue_ld',
-        'ref': r'main',
-      },
-    },
+    'path_provider': r'^2.1.5',
+    'permission_handler': r'^12.0.1',
+    'platform_info': r'^5.0.0',
+    'url_launcher': r'^6.3.2',
+    'collection': r'^1.19.1',
+    'control': r'^0.2.0',
+    'http': r'^1.6.0',
+    'intl': r'^0.20.2',
+    'keyboard_dismisser': r'^3.0.0',
+    'logbook': r'^0.5.1',
+    'meta': r'^1.17.0',
+    'throttling': r'^2.0.1',
   };
 
   /// Developer dependencies
@@ -470,6 +443,8 @@ sealed class Pubspec {
     'flutter_lints': r'^6.0.0',
     'build_runner': r'^2.14.1',
     'pubspec_generator': r'^5.0.1',
+    'flutter_launcher_icons': r'^0.14.4',
+    'flutter_native_splash': r'^2.4.7',
   };
 
   /// Dependency overrides
@@ -526,17 +501,12 @@ sealed class Pubspec {
     'dependency_overrides': dependencyOverrides,
     'workspace': <Object>[
       r'packages/ui',
-      r'packages/localization',
-      r'packages/local_source',
     ],
     'flutter': <String, Object>{
       'generate': true,
       'uses-material-design': true,
       'assets': <Object>[
         r'assets/images/',
-      ],
-      'fonts': <Object>[
-        r'{family: Monospace, fonts: [{asset: packages/ui/lib/font/logbook/Monospace.ttf}]}',
       ],
     },
   };

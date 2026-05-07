@@ -29,7 +29,7 @@ class _AppState extends AppState {
   @override
   Widget build(BuildContext context) => MaterialApp(
     restorationScopeId: 'material_app',
-    
+
     title: 'Sun Fleet',
     debugShowCheckedModeBanner: false,
 
