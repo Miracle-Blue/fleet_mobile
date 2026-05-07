@@ -50,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
         child: Center(
           child: ScaleTransition(
             scale: Tween<double>(begin: 0.9, end: 1.1).animate(_animation),
-            child: AppText.w700s28('Fleet Mobile', color: theme.appColors.white),
+            child: AppText.w700s28('Sun Fleet', color: theme.appColors.white),
           ),
         ),
       ),
